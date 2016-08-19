@@ -1,0 +1,38 @@
+{
+    "name": "caridea/dao",
+    "type": "library",
+    "description": "A shrimp of a DAO support library",
+    "keywords": ["data access", "dao", "db", "mongodb", "doctrine", "exceptions"],
+    "homepage": "http://github.com/libreworks/caridea-dao",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Caridea Contributors",
+            "homepage": "https://github.com/libreworks/caridea-dao/contributors"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "psr/log": "^1.0",
+        "caridea/event": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2.0",
+        "libreworks/psr3-log-hhi": "^1.0.0",
+        "libreworks/ext-mongodb-hhi": "^1.1.0"
+    },
+    "suggest": {
+        "ext-mongodb": "Allows use of MongoDB DAO",
+        "mongodb/mongodb": "In case you want to make life easier for yourself"
+    },
+    "autoload": {
+        "psr-4": {
+          "Caridea\\Dao\\": "src/"
+        }
+    }
+}
