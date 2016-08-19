@@ -31,8 +31,8 @@ class MongoDb
     /**
      * Translates a MongoDB exception.
      *
-     * @param $e - The exception to translate
-     * @return - The exception to use
+     * @param \Exception $e The exception to translate
+     * @return \Exception The exception to use
      */
     public static function translate(\Exception $e): \Exception
     {

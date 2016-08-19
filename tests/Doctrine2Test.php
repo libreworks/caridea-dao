@@ -140,7 +140,9 @@ namespace Doctrine\ORM;
 if (!class_exists('Doctrine\ORM\EntityManager')) {
     class EntityManager
     {
-        public function getRepository($name) {}
+        public function getRepository($name)
+        {
+        }
     }
 }
 if (!class_exists('Doctrine\ORM\EntityRepository')) {
