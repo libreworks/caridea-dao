@@ -34,7 +34,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PreDelete::class, $e);
+            $this->assertInstanceOf(PreDelete::class, $e);
         });
         $this->preDelete($entity);
         $this->verifyMockObjects();
@@ -48,7 +48,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PostDelete::class, $e);
+            $this->assertInstanceOf(PostDelete::class, $e);
         });
         $this->postDelete($entity);
         $this->verifyMockObjects();
@@ -62,7 +62,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PreInsert::class, $e);
+            $this->assertInstanceOf(PreInsert::class, $e);
         });
         $this->preInsert($entity);
         $this->verifyMockObjects();
@@ -76,7 +76,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PostInsert::class, $e);
+            $this->assertInstanceOf(PostInsert::class, $e);
         });
         $this->postInsert($entity);
         $this->verifyMockObjects();
@@ -90,7 +90,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PreUpdate::class, $e);
+            $this->assertInstanceOf(PreUpdate::class, $e);
         });
         $this->preUpdate($entity);
         $this->verifyMockObjects();
@@ -104,7 +104,7 @@ class PublishingTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $this->publisher = $this->createMock(\Caridea\Event\Publisher::class);
         $this->publisher->method('publish')->willReturnCallback(function ($e) {
-           $this->assertInstanceOf(PostUpdate::class, $e);
+            $this->assertInstanceOf(PostUpdate::class, $e);
         });
         $this->postUpdate($entity);
         $this->verifyMockObjects();

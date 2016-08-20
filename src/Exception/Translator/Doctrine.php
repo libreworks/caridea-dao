@@ -31,8 +31,8 @@ class Doctrine
     /**
      * Translates a Doctrine exception.
      *
-     * @param $e - The exception to translate
-     * @return - The exception to use
+     * @param \Exception $e The exception to translate
+     * @return \Exception The exception to use
      */
     public static function translate(\Exception $e): \Exception
     {
@@ -41,11 +41,11 @@ class Doctrine
                 $e instanceof \Doctrine\ODM\MongoDB\DocumentNotFoundException ||
                 $e instanceof \Doctrine\ODM\CouchDB\DocumentNotFoundException) {
             return new \Caridea\Dao\Exception\Unretrievable("Data could not be retrieved", 404, $e);
-        } else if ($e instanceof \Doctrine\ORM\PessimisticLockException ||
+        } elseif ($e instanceof \Doctrine\ORM\PessimisticLockException ||
                 $e instanceof \Doctrine\ORM\OptimisticLockException ||
                 $e instanceof \Doctrine\ODM\CouchDB\OptimisticLockException) {
             return new \Caridea\Dao\Exception\Conflicting("Optimistic or pessimistic concurrency failure", 409, $e);
-        } else if ($e instanceof \Doctrine\ORM\Query\QueryException ||
+        } elseif ($e instanceof \Doctrine\ORM\Query\QueryException ||
                 $e instanceof \Doctrine\ORM\Mapping\MappingException ||
                 $e instanceof \Doctrine\Common\Persistence\Mapping\MappingException) {
             return new \Caridea\Dao\Exception\Inoperable("Invalid API usage", 0, $e);
