@@ -2,7 +2,7 @@
 
 namespace Caridea\Dao\Event;
 
-trait Publisher
+trait Publishing
 {
     protected \Caridea\Event\Publisher $publisher;
 
