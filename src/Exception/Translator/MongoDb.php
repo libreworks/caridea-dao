@@ -41,7 +41,7 @@ class MongoDb
             return new \Caridea\Dao\Exception\Unreachable("System unreachable or connection timed out", $e->getCode(), $e);
         } elseif ($e instanceof \MongoDB\Driver\Exception\InvalidArgumentException ||
                 $e instanceof \MongoDB\Driver\Exception\LogicException ||
-                $e instanceof \MongoDB\Driver\Exception\BadMethodCallException) {
+                $e instanceof \MongoDB\Exception\BadMethodCallException) {
             return new \Caridea\Dao\Exception\Inoperable("Invalid API usage", $e->getCode(), $e);
         } elseif ($e instanceof \MongoDB\GridFS\Exception\FileNotFoundException ||
                 $e instanceof \MongoDB\GridFS\Exception\CorruptFileException) {
@@ -49,6 +49,9 @@ class MongoDb
         } elseif ($e instanceof \MongoDB\Driver\Exception\RuntimeException &&
                 ($e->getCode() == 11000 || 'E11000' == substr($e->getMessage(), 0, 6))) {
             return new \Caridea\Dao\Exception\Duplicative("Unique constraint violation", 409, $e);
+        } elseif ($e instanceof \MongoDB\Driver\Exception\BulkWriteException &&
+                $e->getMessage() == 'Document failed validation') {
+            return new \Caridea\Dao\Exception\Violating("Constraint violation", 422, $e);
         }
         return new \Caridea\Dao\Exception\Generic("Uncategorized database error", 0, $e);
     }
