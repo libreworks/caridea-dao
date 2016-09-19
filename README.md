@@ -5,6 +5,7 @@ Caridea is a miniscule PHP application library. This shrimpy fellow is what you'
 
 This is its Data Access Object support component. You can use these classes to support DAOs that you write.
 
+[![Packagist](https://img.shields.io/packagist/v/caridea/dao.svg)](https://packagist.org/packages/caridea/dao)
 [![Build Status](https://travis-ci.org/libreworks/caridea-dao.svg)](https://travis-ci.org/libreworks/caridea-dao)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/libreworks/caridea-dao/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/libreworks/caridea-dao/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/libreworks/caridea-dao/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/libreworks/caridea-dao/?branch=master)
@@ -38,7 +39,7 @@ We provide a mechanism to translate vendor-specific exceptions (right now, Mongo
 * `Unretrievable` – An exception for unexpected results, for instance no results or too many results.
 * `Violating` – An exception for constraint violations.
    * `Duplicative` – An exception for unique constraint violations.
-When all else fails, there's `Generic`.
+* When all else fails, there's `Generic`.
 
 We also provide abstract DAOs that allow you to make calls against your persistence API and have exceptions translated automatically.
 

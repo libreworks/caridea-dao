@@ -31,10 +31,7 @@ namespace Caridea\Dao\Event;
  */
 trait Publishing
 {
-    /**
-     * @var \Caridea\Event\Publisher
-     */
-    protected $publisher;
+    use \Caridea\Event\PublisherSetter;
 
     /**
      * Sends a pre-delete event.

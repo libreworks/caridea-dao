@@ -4,7 +4,7 @@ namespace Caridea\Dao\Event;
 
 trait Publishing
 {
-    protected \Caridea\Event\Publisher $publisher;
+    use \Caridea\Event\PublisherSetter;
 
     protected function preDelete<T>(T $entity): void
     {
