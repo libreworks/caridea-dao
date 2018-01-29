@@ -9,8 +9,7 @@ This is its Data Access Object support component. You can use these classes to s
 [![Build Status](https://travis-ci.org/libreworks/caridea-dao.svg)](https://travis-ci.org/libreworks/caridea-dao)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/libreworks/caridea-dao/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/libreworks/caridea-dao/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/libreworks/caridea-dao/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/libreworks/caridea-dao/?branch=master)
-
-We've also included `.hhi` files for the Hack typechecker.
+[![Documentation Status](http://readthedocs.org/projects/caridea-dao/badge/?version=latest)](http://caridea-dao.readthedocs.io/en/latest/?badge=latest)
 
 ## Installation
 
@@ -20,13 +19,18 @@ You can install this library using Composer:
 $ composer require caridea/dao
 ```
 
-* The master branch (version 2.x) of this project requires PHP 7.0 and depends on `caridea/event`.
+* The master branch (version 3.x) of this project requires PHP 7.1 and depends on `caridea/event`.
+* Version 2.x of this project requires PHP 7.0 and depends on `caridea/event`.
 
 ## Compliance
 
 Releases of this library will conform to [Semantic Versioning](http://semver.org).
 
 Our code is intended to comply with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/). If you find any issues related to standards compliance, please send a pull request!
+
+## Documentation
+
+* Head over to [Read the Docs](http://caridea-dao.readthedocs.io/en/latest/)
 
 ## Features
 

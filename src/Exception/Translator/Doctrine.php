@@ -15,16 +15,16 @@ declare(strict_types=1);
  * License for the specific language governing permissions and limitations under
  * the License.
  *
- * @copyright 2015-2016 LibreWorks contributors
- * @license   http://opensource.org/licenses/Apache-2.0 Apache 2.0 License
+ * @copyright 2015-2018 LibreWorks contributors
+ * @license   Apache-2.0
  */
 namespace Caridea\Dao\Exception\Translator;
 
 /**
  * Translates Doctrine ORM and ODM exceptions
  *
- * @copyright 2015-2016 LibreWorks contributors
- * @license   http://opensource.org/licenses/Apache-2.0 Apache 2.0 License
+ * @copyright 2015-2018 LibreWorks contributors
+ * @license   Apache-2.0
  */
 class Doctrine
 {
@@ -36,7 +36,9 @@ class Doctrine
      */
     public static function translate(\Exception $e): \Exception
     {
-        if ($e instanceof \Doctrine\ORM\EntityNotFoundException ||
+        if ($e instanceof \Doctrine\DBAL\Exception\ConnectionException) {
+            return new \Caridea\Dao\Exception\Unreachable("System unreachable or connection timed out", $e->getCode(), $e);
+        } elseif ($e instanceof \Doctrine\ORM\EntityNotFoundException ||
                 $e instanceof \Doctrine\ORM\UnexpectedResultException ||
                 $e instanceof \Doctrine\ODM\MongoDB\DocumentNotFoundException ||
                 $e instanceof \Doctrine\ODM\CouchDB\DocumentNotFoundException) {
@@ -45,8 +47,13 @@ class Doctrine
                 $e instanceof \Doctrine\ORM\OptimisticLockException ||
                 $e instanceof \Doctrine\ODM\CouchDB\OptimisticLockException) {
             return new \Caridea\Dao\Exception\Conflicting("Optimistic or pessimistic concurrency failure", 409, $e);
+        } elseif ($e instanceof \Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
+            return new \Caridea\Dao\Exception\Duplicative("Unique constraint violation", 409, $e);
+        } elseif ($e instanceof \Doctrine\DBAL\Exception\ConstraintViolationException) {
+            return new \Caridea\Dao\Exception\Violating("Constraint violation", 422, $e);
         } elseif ($e instanceof \Doctrine\ORM\Query\QueryException ||
                 $e instanceof \Doctrine\ORM\Mapping\MappingException ||
+                $e instanceof \Doctrine\DBAL\Exception\SyntaxErrorException ||
                 $e instanceof \Doctrine\Common\Persistence\Mapping\MappingException) {
             return new \Caridea\Dao\Exception\Inoperable("Invalid API usage", 0, $e);
         }
